@@ -1,17 +1,28 @@
 {
   "name": "lengthy-svg",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Microlibrary to give an SVG path's length in a CSS var.",
   "main": "splitting.js",
   "scripts": {
-    "build": "rollup src/lengthy-svg.js --output.format umd --name 'Lengthy' --output.file lengthy-svg.js && uglifyjs -c -m -o lengthy-svg.min.js -- lengthy-svg.js && npm run sizes",
-    "sizes": "gzip -9 -c lengthy-svg.min.js | wc -c && cat lengthy-svg.min.js | wc -c"
+    "build":
+      "rollup src/lengthy-svg.js --output.format umd --name 'Lengthy' --output.file lengthy-svg.js && uglifyjs -c -m -o lengthy-svg.min.js -- lengthy-svg.js && npm run sizes",
+    "sizes":
+      "gzip -9 -c lengthy-svg.min.js | wc -c && cat lengthy-svg.min.js | wc -c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shshaw/lengthy-svg.git"
   },
-  "keywords": ["svg", "path", "length", "stroke-dasharray", "stroke-dashoffset", "css", "variables", "custom properties"],
+  "keywords": [
+    "svg",
+    "path",
+    "length",
+    "stroke-dasharray",
+    "stroke-dashoffset",
+    "css",
+    "variables",
+    "custom properties"
+  ],
   "author": "Stephen Shaw (stephen@brokensquare.com)",
   "license": "MIT",
   "bugs": {
