@@ -1,6 +1,6 @@
 {
   "name": "lengthy-svg",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Microlibrary to give an SVG path's length in a CSS var.",
   "main": "splitting.js",
   "scripts": {
