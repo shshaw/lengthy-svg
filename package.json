@@ -7,7 +7,9 @@
     "build":
       "rollup src/lengthy-svg.js --output.format umd --name 'Lengthy' --output.file lengthy-svg.js && uglifyjs -c -m -o lengthy-svg.min.js -- lengthy-svg.js && npm run sizes",
     "sizes":
-      "gzip -9 -c lengthy-svg.min.js | wc -c && cat lengthy-svg.min.js | wc -c"
+      "gzip -9 -c lengthy-svg.min.js | wc -c && cat lengthy-svg.min.js | wc -c",
+    "version": "npm run build && git commit -a",
+    "postversion": "git push && git push --tags && rm -rf build/temp"
   },
   "repository": {
     "type": "git",

@@ -11,13 +11,20 @@ function Lengthy(els) {
 }
 
 function getValue(a) {
-  return a.baseVal ? a.baseVal.value || a.baseVal : a;
+  a = a || 0;
+  return a.value !== undefined ? a.value : a.baseVal ? getValue(a.baseVal) : a;
 }
 
 function distance(x1, y1, x2, y2) {
   var dx = x1 - x2;
   var dy = y1 - y2;
   return Math.sqrt(dx * dx + dy * dy);
+}
+
+// Ramanujan ellipse circumference approximation
+// Thanks to https://twitter.com/jhnsnc
+function ellipseLength(rx, ry) {
+  return Math.PI * (3 * (rx + ry) - Math.sqrt((3 * rx + ry) * (rx + 3 * ry)));
 }
 
 function getLength(el) {
@@ -32,9 +39,23 @@ function getLength(el) {
   if (el instanceof SVGUseElement) {
     return getLength(document.querySelector(getValue(el.href)));
   }
-  // <rect>
-  if (el.width) {
-    return getValue(el.width) * 2 + getValue(el.height) * 2;
+
+  // <rect>, rounded <rect>, and <ellipse>
+  if (el.width || el.height || el.rx || el.ry) {
+    var w = getValue(el.width);
+    var h = getValue(el.height);
+    var rx = getValue(el.rx);
+    var ry = getValue(el.ry);
+
+    if (w || h) {
+      rx = Math.min(rx, w / 2);
+      ry = Math.min(ry, h / 2);
+      return (
+        (w + h - 2 * (rx + ry)) * 2 + (rx || ry ? ellipseLength(rx, ry) : 0)
+      );
+    } else {
+      return ellipseLength(rx, ry);
+    }
   }
   // <line>
   if (el.x1) {
@@ -48,14 +69,6 @@ function getLength(el) {
   // <circle>
   if (el.r) {
     return 2 * Math.PI * getValue(el.r);
-  }
-  // <ellipse>
-  if (el.rx && el.ry) {
-    // Ramanujan ellipse circumference approximation
-    // Thanks to https://twitter.com/jhnsnc
-    var rx = getValue(el.rx);
-    var ry = getValue(el.ry);
-    return Math.PI * (3 * (rx + ry) - Math.sqrt((3 * rx + ry) * (rx + 3 * ry)));
   }
   // <polyline> and <polygon>
   if (el.points) {

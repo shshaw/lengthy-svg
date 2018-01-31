@@ -2,7 +2,7 @@
 
 ### _MicroLibrary for SVG Shape Length in a CSS Var_
 
-Lengthy is a JavaScript microlibrary (1.1kb min, 0.6kb gzipped) to get the length of SVG shapes. The length will automatically be added to the element as a CSS Var to make it easy to do CSS animations of SVG `stroke-dashoffset` for the wonderful line drawing SVG technique and other interesting animations.
+Lengthy is a JavaScript microlibrary (1.2kb min, 0.7kb gzipped) to get the length of SVG shapes. The length will automatically be added to the element as a CSS Var to make it easy to do CSS animations of SVG `stroke-dashoffset` for the wonderful line drawing SVG technique and other interesting animations.
 
 * [CSS Animation Demo](https://codepen.io/shshaw/pen/LeKKLd/)
 * [JavaScript Animation Demo](https://codepen.io/shshaw/pen/JpowPb?editors=1010)
