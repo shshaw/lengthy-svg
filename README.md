@@ -24,7 +24,7 @@ For easy embedding on platforms like [Codepen](https://codepen.io), use [unpkg](
 <script src="https://unpkg.com/lengthy-svg/lengthy-svg.js"></script>
 ```
 
---
+---
 
 ## Usage
 
@@ -107,7 +107,7 @@ Firefox and Webkit/Blink all use unprefixed `animation-name`, so to target Webki
 }
 ```
 
---
+---
 
 ## JavaScript Animation
 
